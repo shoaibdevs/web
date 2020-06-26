@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>  
+<html lang="en">  
+    <head>  
+        <meta charset="UTF-8">  
+        <title>Index</title>  
+          
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+    </head>  
+    <body>  
+        {% if students %}
+        <form method="POST" class="post-form" action="/update/{{students.id}}">                  
+            {% csrf_token %}
+            {% for data in students %}
+            <div class="container"> <br>  
+                <div class="form-group row">  
+                    <label class="col-sm-1 col-form-label"></label>  
+                    <div class="col-sm-4">  
+                        <h3>Update Details</h3>  
+                    </div>  
+                </div>  
+                <div class="form-group row">  
+                        <label class="col-sm-2 col-form-label">Title :</label>  
+                    <div class="col-sm-4">  
+                        <input type="text" name="title" id="id_eid" required maxlength="250" value="{{ data.title }}"/>  
+                    </div>  
+                </div>  
+                <div class="form-group row">  
+                        <label class="col-sm-2 col-form-label">Description :</label>  
+                    <div class="col-sm-4">  
+                        <input type="text" name="description" id="id_ename" required maxlength="250" value="{{ data.description }}" />  
+                    </div>  
+                </div>  
+
+                <div class="form-group row">  
+                        <label class="col-sm-1 col-form-label"></label>  
+                    <div class="col-sm-4">  
+                        <button type="submit" class="btn btn-success">Update</button>  
+                    </div>  
+                </div>  
+            </div>  
+            {% endfor %}
+            {% endif %}
+        </form>  
+    </body>  
+</html>  

@@ -1,0 +1,67 @@
+{% extends 'admin/adminbase.html'%}
+{% block content %}
+
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid">
+            <h1 class="mt-4">Tables</h1>
+            
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a href="/panel">Dashboard</a></li>
+                <li class="breadcrumb-item active">Tables</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table mr-1"></i>
+                    DataTable 
+                </div>
+     
+                <div class="card-body">
+                    <div class="table-responsive">
+                        
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thea>
+                            <tbody>
+                                {% for data in news %} 
+                                <tr>
+                                    <td>{{data.id}}</td>
+                                    <td>{{data.title}}</td>
+                                    <td>{{data.description}}</td>
+                                    <td>
+                                        <a href="/edit/{{ data.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+                                        <a href="/delete/{{ data.id }}">Delete</a>  
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <center><a href="/student" class="btn btn-primary">Add New Record</a></center>  
+            </center>
+        </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+{% endblock%}
